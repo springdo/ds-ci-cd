@@ -1,4 +1,4 @@
 NAME=sonarqube
 SOURCE_REPOSITORY_URL=https://github.com/rht-labs/labs-ci-cd.git
-SOURCE_REPOSITORY_REF=master
+SOURCE_REPOSITORY_REF=v3.10.0
 SOURCE_CONTEXT_DIR=docker/sonarqube

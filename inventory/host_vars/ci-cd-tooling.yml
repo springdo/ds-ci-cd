@@ -12,18 +12,6 @@ openshift_cluster_content:
     namespace: "{{ ci_cd_namespace }}"
     tags:
     - jenkins
-  - name: tool-box
-    template: "{{ playbook_dir }}/openshift-templates/docker-build/template.yml"
-    params: "{{ playbook_dir }}/params/tool-box/build"
-    namespace: "{{ ci_cd_namespace }}"
-    tags:
-      - tool-box
-  - name: hoverfly
-    template: "{{ playbook_dir }}/openshift-templates/docker-build/template.yml"
-    params: "{{ playbook_dir }}/params/hoverfly/build"
-    namespace: "{{ ci_cd_namespace }}"
-    tags:
-      - hoverfly
   - name: sonarqube
     template: "{{ playbook_dir }}/openshift-templates/docker-build/template.yml"
     params: "{{ playbook_dir }}/params/sonarqube/build"
@@ -123,9 +111,3 @@ openshift_cluster_content:
     namespace: "{{ ci_cd_namespace }}"
     tags:
     - jenkins
-  - name: hoverfly
-    template: "{{ playbook_dir }}/openshift-templates/hoverfly/template.yml"
-    params: "{{ playbook_dir }}/params/hoverfly/deploy"
-    namespace: "{{ ci_cd_namespace }}"
-    tags:
-    - hoverfly
