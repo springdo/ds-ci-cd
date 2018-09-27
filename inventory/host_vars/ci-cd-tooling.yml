@@ -109,8 +109,8 @@ openshift_cluster_content:
     namespace: "{{ ci_cd_namespace }}"
     tags:
     - nexus
-    # post_steps:
-    # - role: "labs-ci-cd/roles/configure-nexus"
+    post_steps:
+    - role: "ds-ci-cd/roles/configure-nexus"
   - name: jenkins-secret
     template: "{{ playbook_dir }}/openshift-templates/jenkins/jenkins-secrets.yml"
     params: "{{ playbook_dir }}/params/jenkins/secret"

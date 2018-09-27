@@ -37,7 +37,7 @@
     method: POST
     user: "{{ nexus_user }}"
     password: "{{ nexus_password }}"
-    body: "{{ new_nexus_password }}"
+    body: "{{ new_nexus_password | default('') }}"
     headers:
       Content-Type: "text/plain"
     force_basic_auth: yes
