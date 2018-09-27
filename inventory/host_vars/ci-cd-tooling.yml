@@ -103,6 +103,7 @@ openshift_cluster_content:
     namespace: "{{ ci_cd_namespace }}"
     tags:
     - nexus
+    - secret
   - name: nexus
     template: "{{ playbook_dir }}/openshift-templates/nexus/template.yml"
     params: "{{ playbook_dir }}/params/nexus/deploy"
@@ -112,11 +113,12 @@ openshift_cluster_content:
     post_steps:
     - role: "ds-ci-cd/roles/configure-nexus"
   - name: jenkins-secret
-    template: "{{ playbook_dir }}/openshift-templates/jenkins/jenkins-secrets.yml"
+    template: "{{ playbook_dir }}/openshift-templates/secrets/source.yml"
     params: "{{ playbook_dir }}/params/jenkins/secret"
     namespace: "{{ ci_cd_namespace }}"
     tags:
-    - jenkins-secret
+    - jenkins
+    - secret
   - name: jenkins-persistent
     template: "{{ playbook_dir }}/openshift-templates/jenkins/jenkins-persistent-template.yml"
     params: "{{ playbook_dir }}/params/jenkins/deploy"
