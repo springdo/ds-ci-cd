@@ -18,3 +18,6 @@ nexus_repos:
   script_file: ../files/labs-repos.json  
 - script_name: nist-proxy-repos
   script_file: ../files/nist-proxy-repos.json
+admin_setup:
+- script_name: admin-password
+  script_file: ../files/admin-password.json

@@ -97,6 +97,12 @@ openshift_cluster_content:
     namespace: "{{ ci_cd_namespace }}"
     tags:
     - sonarqube
+  - name: nexus-secret
+    template: "{{ playbook_dir }}/openshift-templates/secrets/source.yml"
+    params: "{{ playbook_dir }}/params/nexus/secret"
+    namespace: "{{ ci_cd_namespace }}"
+    tags:
+    - nexus
   - name: nexus
     template: "{{ playbook_dir }}/openshift-templates/nexus/template.yml"
     params: "{{ playbook_dir }}/params/nexus/deploy"
