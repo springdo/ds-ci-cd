@@ -13,6 +13,17 @@
   when:
   - nexus_url is not defined or nexus_url|trim == ''
 
+- name: "Look up Nexus Password"
+  command: >
+    oc get secret nexus-password -o custom-columns=SECRET:.data.password --no-headers | base64 --decode
+  register: new_nexus_password_result
+
+- name: "Set new_nexus_password Result"
+  set_fact:
+    new_nexus_password: "{{ new_nexus_password_result.stdout }}"
+  when:
+  - new_nexus_password is not defined or new_nexus_password|trim == ''
+
 - name: "Ensure Nexus is available before attempting to communicate"
   include_tasks: wait-for-nexus.yml
 
@@ -21,6 +32,7 @@
   with_items:
   - "{{ nexus_repos | default([]) }}"
 
-- name: "Update the Admin password"
-  include_tasks: configure-admin.yml
-  when: set_admin
+- name: "Configure Admin Password with {{ new_nexus_password }}"
+  include_tasks: configure-repos.yml
+  with_items:
+  - "{{ admin_setup | default([]) }}"
