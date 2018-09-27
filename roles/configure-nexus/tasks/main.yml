@@ -14,13 +14,13 @@
   - nexus_url is not defined or nexus_url|trim == ''
 
 - name: "Look up Nexus Password"
-  command: >
-    oc get secret nexus-password -o custom-columns=SECRET:.data.password --no-headers | base64 --decode
+  command:
+      'oc get secret nexus-password -o custom-columns=SECRET:.data.password --no-headers'
   register: new_nexus_password_result
 
 - name: "Set new_nexus_password Result"
   set_fact:
-    new_nexus_password: "{{ new_nexus_password_result.stdout }}"
+    new_nexus_password: "{{ new_nexus_password_result.stdout | b64decode }}"
   when:
   - new_nexus_password is not defined or new_nexus_password|trim == ''
 
