@@ -36,7 +36,7 @@
       <jenkins.branch.BranchSource>
         <source class="jenkins.plugins.git.GitSCMSource" plugin="git@3.9.1">
           <id>78e3fe59-617b-4bc1-a241-81d6801d5fd1</id>
-          <remote>https://github.com/rht-labs/todolist-fe.git</remote>
+          <remote>https://github.com/springdo/angular6-jest-scaffold.git</remote>
           <credentialsId></credentialsId>
           <traits>
             <jenkins.plugins.git.traits.BranchDiscoveryTrait/>

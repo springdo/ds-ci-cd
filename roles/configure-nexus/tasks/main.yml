@@ -15,7 +15,7 @@
 
 - name: "Look up Nexus Password"
   command:
-      'oc get secret nexus-password -o custom-columns=SECRET:.data.password --no-headers'
+      oc get secret nexus-password  -n {{ content.namespace }} -o  custom-columns=SECRET:.data.password --no-headers
   register: new_nexus_password_result
 
 - name: "Set new_nexus_password Result"
